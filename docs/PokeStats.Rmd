@@ -17,9 +17,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This tool is meant to help pokemon players by providing ranked information based on typing and stats.
 
- * **To sort by typing:** Put it in the search bar
+ * **To sort by typing:** Put it in the search bar or type filter
  * **To sort by a stat:** Click on the arrows by the column name
  * **To sort by multiple stats:** Shift click on the arrows by the column names
+ * **The filters under each column name can be used to furthur narrow your results**
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library (DT)
@@ -28,7 +29,10 @@ library(tidyverse)
 galar <- read_csv("./Data/pokemon_galarDex.csv")
 galar <- select(galar, -c(X1, height_m, is_legendary, base_total, pokedex_number))
 
-DT::datatable(galar)
+DT::datatable(galar, class='cell-border stripe', rownames = FALSE,
+              colnames = c('Name', 'Type 1', 'Type 2', 'HP', 'Attack',
+                           'Defense','Sp_Attack','Sp_Defense','Speed','Weight_Kg'),
+              filter='top')
 ```
 </div>
 

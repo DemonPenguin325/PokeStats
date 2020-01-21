@@ -27,7 +27,7 @@ library (DT)
 library(tidyverse)
 
 galar <- read_csv("./Data/pokemon_galarDex.csv")
-galar <- select(galar, -c(X1, height_m, is_legendary, base_total, pokedex_number))
+galar <- select(galar, -c(X1, base_total, pokedex_number))
 
 DT::datatable(galar, class='cell-border stripe', rownames = FALSE,
               colnames = c('Name', 'Type 1', 'Type 2', 'HP', 'Attack',

@@ -1,0 +1,35 @@
+---
+output:
+  html_document:
+    theme: null
+    highlight: null
+    css: pokemon.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+<div class="imgTitle">
+  <img src="Resources/Poke-Stats.png" alt="Poke Stats">
+</div>
+<div class="backdrop">
+## Galar PokeStats
+
+This tool is meant to help pokemon players by providing ranked information based on typing and stats.
+
+ * **To sort by typing:** Put it in the search bar
+ * **To sort by a stat:** Click on the arrows by the column name
+ * **To sort by multiple stats:** Shift click on the arrows by the column names
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library (DT)
+library(tidyverse)
+
+galar <- read_csv("./Data/pokemon_galarDex.csv")
+galar <- select(galar, -c(X1, height_m, is_legendary, base_total, pokedex_number))
+
+DT::datatable(galar)
+```
+</div>
+
+
